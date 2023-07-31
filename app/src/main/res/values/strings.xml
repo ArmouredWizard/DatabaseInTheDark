@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Database In The Dark</string>
+    <string name="scoundrel_display_title">Scoundrel List</string>
+    <string name="scoundrel_detail_title">Scoundrel Details</string>
+    <string name="scoundrel_entry_title">Enter your Scoundrel\'s Details</string>
+    <string name="save_action">Save</string>
+    <string name="scoundrel_edit_title">Edit Your Scoundrel</string>
+    <string name="contact_entry_title">Enter Contact Details</string>
+    <string name="contact_display_title">List of Contacts</string>
+    <string name="contact_detail_title">Contact Details</string>
+    <string name="crew_display_title">Display Crew List</string>
+    <string name="crew_entry_title">Enter Crew Details</string>
+    <string name="tier_info">Tier is how powerful your Crew is, compared to other Factions.\nWeak hold is a tenuous position, easily lost\nString Hold is a secure position</string>
+    <string name="reputation_info">Rep determines how close your Crew is to gaining Tier</string>
+    <string name="heat_info">Heat is the amount of attention you attract from the authorities</string>
+    <string name="crew_detail_title">Crew Details</string>
+    <string name="crew_edit_title">Edit Crew Details</string>
+    <string name="note_display_title">List of Notes</string>
+    <string name="note_entry_title">Enter your Note</string>
+    <string name="note_edit_title">Edit Note</string>
+    <string name="contact_edit_title">Edit Contact</string>
+
+</resources>
