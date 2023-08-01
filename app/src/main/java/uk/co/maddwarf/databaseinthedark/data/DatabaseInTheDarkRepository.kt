@@ -19,7 +19,7 @@ interface DatabaseInTheDarkRepository{
     suspend fun deleteScoundrel(scoundrel: Scoundrel)
     suspend fun updateScoundrel(scoundrel: Scoundrel)
 
-    suspend fun getScoundrelsByCrew(crewName:String):List<Scoundrel>
+    suspend fun getScoundrelsByCrew(crewId:Int):List<Scoundrel>
 
     fun getAllContactsStream(): Flow<List<Contact>>
     fun getContactStream(id:Int): Flow<Contact?>
@@ -39,20 +39,20 @@ interface DatabaseInTheDarkRepository{
     fun getContactWithScoundrelAndRank(id: Int): Flow<List<ScoundrelAndRank>>
 
     fun getAllCrewsStream(): Flow<List<Crew>>
-    fun getCrewStream(id: String): Flow<Crew?>
+    fun getCrewStream(crewId: Int): Flow<Crew?>
     suspend fun updateCrew(crew: Crew)
     suspend fun deleteCrew(crew: Crew)
     suspend fun insertCrew(crew: Crew):Long
 
-    fun getCrewWithScoundrels(crew: String): Flow<List<CrewWithScoundrels>>
+    fun getCrewWithScoundrels(crewId: Int): Flow<List<CrewWithScoundrels>>
 
     suspend fun addContactCrewLink(contactsCrewsJoin: ContactsCrewsJoin)
-    suspend fun removeContactCrewLink(crewName: String)
+    suspend fun removeContactCrewLink(crewId: Int)
     suspend fun removeCrewContactLink(contactId: Int)
-    suspend fun removeSingleContactCrewLink(crewName: String, contactId: Int)
+    suspend fun removeSingleContactCrewLink(crewId: Int, contactId: Int)
 
-    fun getCrewWithContacts(name:String):Flow<List<CrewWithContacts>>
-    fun getCrewWithContactsAndRank(name: String): Flow<List<ContactAndRank>>
+    fun getCrewWithContacts(crewId: Int):Flow<List<CrewWithContacts>>
+    fun getCrewWithContactsAndRank(crewId: Int): Flow<List<ContactAndRank>>
 
     fun getContactWithCrews(id:Int):Flow<List<ContactWithCrews>>
     fun getContactWithCrewAndRank(id: Int): Flow<List<CrewAndRank>>

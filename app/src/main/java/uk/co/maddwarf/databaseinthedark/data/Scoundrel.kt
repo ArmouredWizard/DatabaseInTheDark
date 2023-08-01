@@ -9,7 +9,7 @@ data class Scoundrel (
     val scoundrelId: Int,
     val name: String,
     val playbook: String,
-    val crew: String,
+    val crewId: Int,
     val hunt:String,
     val study:String,
     val survey:String,

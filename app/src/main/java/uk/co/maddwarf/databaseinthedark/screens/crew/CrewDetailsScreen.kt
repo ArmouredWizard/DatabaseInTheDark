@@ -69,7 +69,7 @@ object CrewDetailsDestination : NavigationDestination {
 fun CrewDetailsScreen(
     navController: NavController,
     navigateBack: () -> Unit,
-    navigateToCrewEdit: (String) -> Unit,
+    navigateToCrewEdit: (Int) -> Unit,
     navigateToScoundrelDetails: (Int) -> Unit,
     navigateToContactDetails: (Int) -> Unit,
     navigateToCrewEntry: () -> Unit,
@@ -95,7 +95,7 @@ fun CrewDetailsScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { navigateToCrewEdit(uiState.value.crewDetails.name) },
+                onClick = { navigateToCrewEdit(uiState.value.crewDetails.crewId) },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(16.dp)
             ) {
@@ -112,7 +112,7 @@ fun CrewDetailsScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState()),
-            scoundrelist = scoundrelList,
+            scoundreList = scoundrelList,
             contactList = contactList,
             onScoundrelClick = navigateToScoundrelDetails,
             onContactClick = navigateToContactDetails,
@@ -126,7 +126,7 @@ fun CrewDetailsBody(
     modifier: Modifier,
     onScoundrelClick: (Int) -> Unit,
     onContactClick: (Int) -> Unit,
-    scoundrelist: List<Scoundrel>,
+    scoundreList: List<Scoundrel>,
     contactList: List<ContactAndRank>
 ) {
     Box(
@@ -145,7 +145,7 @@ fun CrewDetailsBody(
             CrewDetailsBlock(
                 crew = detailsUiState.crewDetails.toCrew(),
                 modifier = Modifier.fillMaxSize(),
-                scoundrelList = scoundrelist,
+                scoundrelList = scoundreList,
                 onScoundrelClick = {
                     // Log.d("CLICK", it.id.toString())
                     onScoundrelClick(it.scoundrelId)

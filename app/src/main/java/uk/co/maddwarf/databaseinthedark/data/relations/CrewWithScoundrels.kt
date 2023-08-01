@@ -8,8 +8,8 @@ import uk.co.maddwarf.databaseinthedark.data.Scoundrel
 data class CrewWithScoundrels(
     @Embedded val crew: Crew,
     @Relation(
-        parentColumn = "crewName",
-        entityColumn = "crew"
+        parentColumn = "crewId",
+        entityColumn = "crewId"
     )
     val scoundrels: List<Scoundrel>
 )

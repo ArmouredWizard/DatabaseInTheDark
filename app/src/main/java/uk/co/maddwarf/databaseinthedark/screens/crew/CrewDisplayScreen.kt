@@ -65,7 +65,7 @@ object CrewDisplayDestination : NavigationDestination {
 @Composable
 fun CrewDisplayScreen(
     navController: NavController,
-    navigateToCrewDetails: (String) -> Unit,
+    navigateToCrewDetails: (Int) -> Unit,
     navigateToCrewEntry: () -> Unit,
     navigateToHome: () -> Unit,
     onNavigateUp: () -> Unit,
@@ -142,7 +142,7 @@ fun CrewDisplayScreen(
 @Composable
 private fun CrewDisplayBody(
     crewList: List<Crew>,
-    onItemClick: (String) -> Unit,
+    onItemClick: (Int) -> Unit,
     navController: NavController,
     modifier: Modifier = Modifier,
     displayDeleteDialog: (Crew) -> Unit
@@ -194,7 +194,7 @@ private fun CrewDisplayBody(
                 CrewList(
                     crewList = filteredList,
                     onItemClick = {
-                        onItemClick(it.crewName)
+                        onItemClick(it.crewId)
                     },
                     modifier = Modifier.padding(horizontal = 6.dp),
                     displayDeleteDialog = displayDeleteDialog
@@ -212,7 +212,7 @@ private fun CrewList(
     displayDeleteDialog: (Crew) -> Unit
 ) {
     LazyColumn(modifier = modifier) {
-        items(items = crewList, key = { it.crewName }) { item ->
+        items(items = crewList, key = { it.crewId }) { item ->
             CrewItem(
                 crew = item,
                 modifier = Modifier

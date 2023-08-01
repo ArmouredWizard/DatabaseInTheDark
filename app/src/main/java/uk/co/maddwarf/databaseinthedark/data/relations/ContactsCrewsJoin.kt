@@ -15,7 +15,7 @@ primaryKeys = ["crewName", "contactId"],
     indices = [Index("crewName"), Index("contactId")]
 )
 data class ContactsCrewsJoin(
-    val crewName: String,
+    val crewId: Int,
     val contactId:Int,
     val rank: Rank
 )
@@ -23,7 +23,7 @@ data class ContactsCrewsJoin(
 data class CrewWithContacts(
     @Embedded val crew: Crew,
     @Relation(
-        parentColumn = "crewName",
+        parentColumn = "crewId",
         entityColumn = "contactId",
         associateBy = Junction(ContactsCrewsJoin::class)
     )
@@ -34,7 +34,7 @@ data class ContactWithCrews(
     @Embedded val contact: Contact,
     @Relation(
         parentColumn = "contactId",
-        entityColumn = "crewName",
+        entityColumn = "crewId",
         associateBy = Junction(ContactsCrewsJoin::class)
     )
     val screwList: List<Crew>

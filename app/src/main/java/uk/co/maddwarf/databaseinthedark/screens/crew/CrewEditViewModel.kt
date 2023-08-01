@@ -31,7 +31,7 @@ class CrewEditViewModel(
     val databaseInTheDarkRepository: DatabaseInTheDarkRepository,
 ) : ViewModel() {
 
-    private val crewId: String = checkNotNull(savedStateHandle[CrewEditDestination.itemIdArg])
+    private val crewId: Int = checkNotNull(savedStateHandle[CrewEditDestination.itemIdArg])
 
     var crewEditUiState: StateFlow<CrewEditUiState> =
         databaseInTheDarkRepository.getCrewStream(crewId)
@@ -135,7 +135,7 @@ class CrewEditViewModel(
                 databaseInTheDarkRepository.addContactCrewLink(
                     ContactsCrewsJoin(
                        contactId =  contactIndex,
-                        crewName = crewId,
+                        crewId = crewId,
                         rank = crewContact.rank//todo enter real rank
                     )
                 )
@@ -153,28 +153,24 @@ class CrewEditViewModel(
                     contactIndex = contactFromRepo.contactId
                     databaseInTheDarkRepository.removeSingleContactCrewLink(
                         contactId = contactIndex,
-                        crewName = intermediateCrewUiState.intermediateCrewDetails.name
+                        crewId = intermediateCrewUiState.intermediateCrewDetails.crewId
                     )
                 }
             }
 
 
-
-
-
-
             //end contacts
         }
-    }
+    }//end save item
 
     suspend fun deleteCrew(crew: CrewDetails){
         Log.d("DELETE from EDIT", crew.name)
         //   notesInTheNightRepository.deleteCrew(crew.toCrew()) //todo here and DISPLAY
 
-        val scoundrelsToProcess = databaseInTheDarkRepository.getScoundrelsByCrew(crew.name)
+        val scoundrelsToProcess = databaseInTheDarkRepository.getScoundrelsByCrew(crew.crewId)
         Log.d("TO DELETE", scoundrelsToProcess.toString())
         scoundrelsToProcess.forEach {scoundrel ->
-            databaseInTheDarkRepository.updateScoundrel(scoundrel.copy(crew = "No Crew"))
+            databaseInTheDarkRepository.updateScoundrel(scoundrel.copy(crewId = 0))//todo
         }
         databaseInTheDarkRepository.deleteCrew(crew.toCrew()) //todo FIX CRASH
     }

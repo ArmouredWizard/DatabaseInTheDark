@@ -26,8 +26,8 @@ class OfflineDatabaseInTheDarkRepository(
 ) : DatabaseInTheDarkRepository {
     override fun getAllScoundrelsStream(): Flow<List<Scoundrel>> = scoundrelDao.getAllScoundrels()
     override fun getScoundrelStream(id: Int): Flow<Scoundrel?> = scoundrelDao.getScoundrel(id)
-    override suspend fun getScoundrelsByCrew(crewName: String): List<Scoundrel> =
-        scoundrelDao.getScoundrelsByCrew(crewName)
+    override suspend fun getScoundrelsByCrew(crewId: Int): List<Scoundrel> =
+        scoundrelDao.getScoundrelsByCrew(crewId)
 
     override suspend fun insertScoundrel(scoundrel: Scoundrel) = scoundrelDao.insert(scoundrel)
     override suspend fun deleteScoundrel(scoundrel: Scoundrel) = scoundrelDao.delete(scoundrel)
@@ -67,19 +67,19 @@ class OfflineDatabaseInTheDarkRepository(
         contactsScoundrelsJoinDao.getContactWithScoundrelAndRank(id)
 
     override fun getAllCrewsStream(): Flow<List<Crew>> = crewDao.getAllCrews()
-    override fun getCrewStream(id: String): Flow<Crew?> = crewDao.getCrew(id)
+    override fun getCrewStream(crewId: Int): Flow<Crew?> = crewDao.getCrew(crewId)
     override suspend fun insertCrew(crew: Crew) = crewDao.insert(crew)
     override suspend fun deleteCrew(crew: Crew) = crewDao.delete(crew)
     override suspend fun updateCrew(crew: Crew) = crewDao.update(crew)
-    override fun getCrewWithScoundrels(crew: String): Flow<List<CrewWithScoundrels>> =
-        crewDao.getCrewWithScoundrels(crew)
+    override fun getCrewWithScoundrels(crewId: Int): Flow<List<CrewWithScoundrels>> =
+        crewDao.getCrewWithScoundrels(crewId)
 
     override suspend fun addContactCrewLink(contactsCrewsJoin: ContactsCrewsJoin) = contactsCrewsJoinDao.addContactCrewLink(contactsCrewsJoin)
-    override suspend fun removeContactCrewLink(crewName: String)  = contactsCrewsJoinDao.removeContactCrewLink(crewName)
+    override suspend fun removeContactCrewLink(crewId:Int)  = contactsCrewsJoinDao.removeContactCrewLink(crewId)
     override suspend fun removeCrewContactLink(contactId: Int)  = contactsCrewsJoinDao.removeCrewContactLink(contactId)
-    override suspend fun removeSingleContactCrewLink(crewName: String, contactId: Int)  = contactsCrewsJoinDao.removeSingleContactCrewLink(name = crewName, contactId = contactId)
-    override fun getCrewWithContacts(name: String): Flow<List<CrewWithContacts>>  = contactsCrewsJoinDao.getCrewWithContacts(name)
-    override fun getCrewWithContactsAndRank(name: String): Flow<List<ContactAndRank>>  = contactsCrewsJoinDao.getCrewWithContactsAndRank(name)
+    override suspend fun removeSingleContactCrewLink(crewId: Int, contactId: Int)  = contactsCrewsJoinDao.removeSingleContactCrewLink(crewId = crewId, contactId = contactId)
+    override fun getCrewWithContacts(crewId: Int): Flow<List<CrewWithContacts>>  = contactsCrewsJoinDao.getCrewWithContacts(crewId)
+    override fun getCrewWithContactsAndRank(crewId: Int): Flow<List<ContactAndRank>>  = contactsCrewsJoinDao.getCrewWithContactsAndRank(crewId)
     override fun getContactWithCrews(id: Int): Flow<List<ContactWithCrews>>  = contactsCrewsJoinDao.getContactWithCrews(id)
     override fun getContactWithCrewAndRank(id: Int): Flow<List<CrewAndRank>>  = contactsCrewsJoinDao.getContactWithCrewAndRank(id)
 

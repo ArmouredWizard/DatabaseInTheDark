@@ -28,10 +28,10 @@ class CrewDisplayViewModel(val databaseInTheDarkRepository: DatabaseInTheDarkRep
 
     suspend fun deleteCrew(crew: CrewDetails){
         Log.d("DELETE from DISPLAY", crew.name)
-        val scoundrelsToProcess = databaseInTheDarkRepository.getScoundrelsByCrew(crew.name)
+        val scoundrelsToProcess = databaseInTheDarkRepository.getScoundrelsByCrew(crew.crewId)
         Log.d("TO DELETE", scoundrelsToProcess.toString())
         scoundrelsToProcess.forEach {scoundrel ->
-            databaseInTheDarkRepository.updateScoundrel(scoundrel.copy(crew = "No Crew"))
+            databaseInTheDarkRepository.updateScoundrel(scoundrel.copy(crewId = 0)) //todo ?????
         }
         databaseInTheDarkRepository.deleteCrew(crew.toCrew())
     }

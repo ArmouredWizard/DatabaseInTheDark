@@ -20,7 +20,7 @@ import uk.co.maddwarf.databaseinthedark.data.relations.Converters
         Note::class,
         ContactsCrewsJoin::class
     ],
-    version = 15,
+    version = 16,
     exportSchema = false
 )
 

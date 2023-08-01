@@ -215,7 +215,7 @@ fun ScoundrelDisplayBody(
                         list = crewNamesList,
                         chooser = ::crewChooser,
                         report = chosenCrew
-                    )
+                    ) ///TODO swap to Crew Spinner ?????
 
                     crewFilteredList = if (chosenCrew == "ALL CREWS") {
                         playbookFilteredList

@@ -166,7 +166,7 @@ fun ScoundrelDetails(
             verticalAlignment = Alignment.CenterVertically
         ) {
             TraitText(title = "Playbook: ", text = scoundrel.playbook)
-            TraitText(title = "Crew: ", text = scoundrel.crew, onClick = navigateToCrewDetails)
+            TraitText(title = "Crew: ", text = scoundrel.crew, onClick = navigateToCrewDetails)//TODO!!! get crew name!!!
         }
         Row(
             modifier = Modifier

@@ -21,15 +21,15 @@ interface CrewDao {
     @Delete
     suspend fun delete(crew: Crew)
 
-    @Query("SELECT * from crews WHERE crewName = :id")
-    fun getCrew(id:String): Flow<Crew>
+    @Query("SELECT * from crews WHERE crewId = :id")
+    fun getCrew(id:Int): Flow<Crew>
 
     @Query("SELECT * from crews ORDER BY crewName ASC")
     fun getAllCrews(): Flow<List<Crew>>
 
     @Transaction
-    @Query ("SELECT * FROM crews WHERE crewName = :crewName")
-     fun getCrewWithScoundrels(crewName: String):Flow<List<CrewWithScoundrels>>
+    @Query ("SELECT * FROM crews WHERE crewId = :crewId")
+     fun getCrewWithScoundrels(crewId:Int):Flow<List<CrewWithScoundrels>>
 
 
 

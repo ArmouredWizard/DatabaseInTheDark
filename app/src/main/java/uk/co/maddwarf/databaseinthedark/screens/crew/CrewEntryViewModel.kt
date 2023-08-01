@@ -88,7 +88,7 @@ class CrewEntryViewModel(private val databaseInTheDarkRepository: DatabaseInTheD
                 databaseInTheDarkRepository.addContactCrewLink(
                     ContactsCrewsJoin(
                         contactId = contactIndex.toInt(),
-                        crewName = crewEntryUiState.crewDetails.name,
+                        crewId = crewEntryUiState.crewDetails.crewId,
                         rank = crewContact.rank
                     )
                 )
@@ -97,10 +97,7 @@ class CrewEntryViewModel(private val databaseInTheDarkRepository: DatabaseInTheD
             //end save contacts
 
 
-
-
-
-        }
+        }//save item
 
         //todo SAVE CONATCS
 

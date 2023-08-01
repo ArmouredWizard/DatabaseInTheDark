@@ -73,7 +73,7 @@ fun ContactDetailsScreen(
     navigateToHome: () -> Unit,
     navigateToContactEdit: (Int) -> Unit,
     navigateToScoundrelDetails: (Int) -> Unit,
-    navigateToCrewDetails: (String)->Unit,
+    navigateToCrewDetails: (Int)->Unit,
     viewModel: ContactDetailsViewModel = viewModel(factory = AppViewModelProvider.Factory),
 
     ) {
@@ -135,7 +135,7 @@ fun ContactDetailsBody(
     //  contactList: List<Contact>,
     modifier: Modifier,
      navigateToScoundrelDetails: (Int) -> Unit,
-    navigateToCrewDetails:(String)->Unit,
+    navigateToCrewDetails:(Int)->Unit,
     scoundrelList: List<ScoundrelAndRank>,
     crewList:List<CrewAndRank>
 ) {
@@ -171,7 +171,7 @@ fun ContactDetails(
     contact: Contact,
     modifier: Modifier,
        navigateToScoundrelDetails: (Int) -> Unit,
-    navigateToCrewDetails:(String)->Unit,
+    navigateToCrewDetails:(Int)->Unit,
     scoundrelList: List<ScoundrelAndRank>,
     crewList:List<CrewAndRank>
 ) {
@@ -243,7 +243,7 @@ fun ScoundrelRankItem(
 @Composable
 fun CrewList(
     crewList:List<CrewAndRank>,
-    navigateToCrewDetails:(String) -> Unit
+    navigateToCrewDetails:(Int) -> Unit
 ){
     Column(
         modifier = Modifier
@@ -262,7 +262,7 @@ fun CrewList(
 @Composable
 fun CrewRankItem(
     crew: CrewAndRank,
-    onClick:(String) -> Unit
+    onClick:(Int) -> Unit
 ) {
     Surface(
         modifier = Modifier
@@ -276,7 +276,7 @@ fun CrewRankItem(
                 .background(color = Color.LightGray)
                 .padding(10.dp)
                 .fillMaxWidth()
-                .clickable { onClick(crew.crew.crewName) },
+                .clickable { onClick(crew.crew.crewId) },
             horizontalArrangement = Arrangement.SpaceBetween
 
         ) {

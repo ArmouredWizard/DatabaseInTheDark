@@ -172,7 +172,7 @@ fun DatabaseInTheDarkNavHost(
         composable(
             route = CrewDetailsDestination.routeWithArgs,
             arguments = listOf(navArgument(CrewDetailsDestination.itemIdArg) {
-                type = NavType.StringType
+                type = NavType.IntType
             })
         ) {
             CrewDetailsScreen(
@@ -187,7 +187,7 @@ fun DatabaseInTheDarkNavHost(
         composable(route = CrewEditDestination.routeWithArgs,
             arguments = listOf(
                 navArgument(CrewEditDestination.itemIdArg) {
-                    type = NavType.StringType
+                    type = NavType.IntType
                 }
             )) {
             CrewEditScreen(

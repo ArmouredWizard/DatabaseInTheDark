@@ -25,7 +25,9 @@ interface ScoundrelDao {
     @Query("SELECT * from scoundrels ORDER BY name ASC")
     fun getAllScoundrels(): Flow<List<Scoundrel>>
 
-    @Query("SELECT * from scoundrels WHERE crew = :crewName")
-    suspend fun getScoundrelsByCrew(crewName:String):List<Scoundrel>
+    @Query("SELECT * from scoundrels WHERE crewId = :crewId")
+    suspend fun getScoundrelsByCrew(crewId: Int):List<Scoundrel>
+
+
 
 }

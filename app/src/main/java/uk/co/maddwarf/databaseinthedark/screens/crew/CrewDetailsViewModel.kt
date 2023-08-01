@@ -21,7 +21,7 @@ class CrewDetailsViewModel(
     databaseInTheDarkRepository: DatabaseInTheDarkRepository,
 ) : ViewModel() {
 
-    private val crewId: String = checkNotNull(savedStateHandle[CrewDetailsDestination.itemIdArg])
+    private val crewId: Int = checkNotNull(savedStateHandle[CrewDetailsDestination.itemIdArg])
 
     val crewDetailsUiState: StateFlow<CrewDetailsUiState> =
         databaseInTheDarkRepository.getCrewStream(crewId)

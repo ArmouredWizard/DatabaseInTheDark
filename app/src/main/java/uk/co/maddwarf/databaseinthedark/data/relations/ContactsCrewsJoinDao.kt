@@ -14,35 +14,35 @@ interface ContactsCrewsJoinDao{
     suspend fun addContactCrewLink(contactsCrewsJoin: ContactsCrewsJoin)
 
     @Transaction
-    @Query("SELECT * FROM crews where crewName = :name")
-    fun getCrewWithContacts(name: String): Flow<List<CrewWithContacts>>
+    @Query("SELECT * FROM crews where crewId = :id")
+    fun getCrewWithContacts(id: Int): Flow<List<CrewWithContacts>>
 
     @Transaction
     @Query("SELECT * FROM contacts where contactId = :id")
     fun getContactWithCrews(id:Int): Flow<List<ContactWithCrews>>
 
-    @Query("DELETE from ContactsCrewsJoin WHERE crewName = :name")
-    suspend fun removeContactCrewLink(name: String)
+    @Query("DELETE from ContactsCrewsJoin WHERE crewId = :id")
+    suspend fun removeContactCrewLink(id: Int)
 
     @Query("DELETE from ContactsCrewsJoin WHERE contactId = :contactId")
     suspend fun removeCrewContactLink(contactId: Int)
 
     @Transaction
-    @Query("DELETE from ContactsCrewsJoin WHERE crewName = :name AND contactId = :contactId")
-    suspend fun removeSingleContactCrewLink(name: String, contactId: Int)
+    @Query("DELETE from ContactsCrewsJoin WHERE crewId = :crewId AND contactId = :contactId")
+    suspend fun removeSingleContactCrewLink(crewId:Int, contactId: Int)
 
     //testing
     @Transaction
     @Query("select * from crews inner join ContactsCrewsJoin" +
-            " on crews.crewName = ContactsCrewsJoin.crewName\n" +
+            " on crews.crewId = ContactsCrewsJoin.crewId\n" +
             "inner join contacts on contacts.contactId = ContactsCrewsJoin.contactId " +
-            "WHERE crews.crewName = :name")
-    fun getCrewWithContactsAndRank(name: String): Flow<List<ContactAndRank>>
+            "WHERE crews.crewId = :crewId")
+    fun getCrewWithContactsAndRank(crewId: Int): Flow<List<ContactAndRank>>
 
     @Transaction
     @Query("select * from contacts inner join ContactsCrewsJoin" +
             " on contacts.contactId = ContactsCrewsJoin.contactId\n" +
-            "inner join crews on crews.crewName = ContactsCrewsJoin.crewName " +
+            "inner join crews on crews.crewId = ContactsCrewsJoin.crewId " +
             "WHERE contacts.contactId = :id")
     fun getContactWithCrewAndRank(id: Int): Flow<List<CrewAndRank>>
 
